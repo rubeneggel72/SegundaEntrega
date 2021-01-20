@@ -1,0 +1,14 @@
+Hola Ruben!! 
+
+Lo que te está pasando es que el import que haces para traerte las clases de suma y resta
+es una operación asíncrona. Actualmente vos asignas a operation el valor que devuelva el import
+ pero no esperas a que eso se resuelva, por lo que no está teniendo el valor que esperas. 
+Para solucionarlo, tenes que declarar la función "operacion" 
+como una función asíncrona y cuando traes los módulos usar await así:
+operation= await import(calculateModule).then(m => m.Suma)
+Del mismo modo, en la función "operaciones" tenes que declararla
+ cómo una función asincrona que espere a que la función operacion devuelva el valor. 
+Espero que se entienda, si no avisame y lo vemos mejor. 
+Si lograr solucionarlo volve a subir los archivos. 
+Abrazo!
+20/01 18:09

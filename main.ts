@@ -1,14 +1,14 @@
 
 const calculateModule = './calculates'
 
-const operacion = (num1: number, num2: number, op: string) => {
-    let operation = null;
+const  operacion = async(num1: number, num2: number, op: string) => {
+    let operation: any ;
     switch (op.toLowerCase()) {
         case 'suma':
-            operation=import(calculateModule).then(m => m.Suma)
+            operation=await import(calculateModule).then(m => m.Suma)
             break
         case 'resta':
-            operation=import(calculateModule).then(m => m.Resta)
+            operation=await import(calculateModule).then(m => m.Resta)
                 break
         default:
             return console.log(`${op} no es una operación soportada`);
@@ -17,9 +17,9 @@ const operacion = (num1: number, num2: number, op: string) => {
 }
 const operaciones = async () => {
  
-    const resultado2 = operacion(10, 3, 'suma')
+    const resultado2 = await operacion(10, 3, 'suma')
     console.log(resultado2)
-    const resultado3 = operacion(10, 3, 'resta')
+    const resultado3 = await operacion(10, 3, 'resta')
     console.log(resultado3)
 }
 

@@ -18,14 +18,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 const calculateModule = './calculates';
-const operacion = (num1, num2, op) => {
-    let operation = null;
+const operacion = async (num1, num2, op) => {
+    let operation;
     switch (op.toLowerCase()) {
         case 'suma':
-            operation = Promise.resolve().then(() => __importStar(require(calculateModule))).then(m => m.Suma);
+            operation = await Promise.resolve().then(() => __importStar(require(calculateModule))).then(m => m.Suma);
             break;
         case 'resta':
-            operation = Promise.resolve().then(() => __importStar(require(calculateModule))).then(m => m.Resta);
+            operation = await Promise.resolve().then(() => __importStar(require(calculateModule))).then(m => m.Resta);
             break;
         default:
             return console.log(`${op} no es una operación soportada`);
@@ -33,9 +33,9 @@ const operacion = (num1, num2, op) => {
     return new operation(num1, num2).resultado();
 };
 const operaciones = async () => {
-    const resultado2 = operacion(10, 3, 'suma');
+    const resultado2 = await operacion(10, 3, 'suma');
     console.log(resultado2);
-    const resultado3 = operacion(10, 3, 'resta');
+    const resultado3 = await operacion(10, 3, 'resta');
     console.log(resultado3);
 };
 operaciones();
